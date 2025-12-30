@@ -1,0 +1,17 @@
+{
+  "name": "beauty-ecom",
+  "version": "1.0.0",
+  "description": "A modern beauty e-commerce website",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "build": "echo 'Build process complete'",
+    "dev": "live-server --port=3000 --open=/index.html"
+  },
+  "keywords": ["beauty", "ecommerce", "cosmetics", "skincare", "makeup"],
+  "author": "Beauty E-commerce Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

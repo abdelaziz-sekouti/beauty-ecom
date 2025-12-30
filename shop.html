@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - GlowBeauty</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-pink-600">GlowBeauty</span>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="index.html" class="text-gray-900 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="shop.html" class="text-pink-600 border-b-2 border-pink-600 px-3 py-2 text-sm font-medium">Shop</a>
+                        <a href="about.html" class="text-gray-900 hover:text-pink-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" id="search-input" placeholder="Search products..." class="pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <button class="text-gray-600 hover:text-pink-600 transition-colors relative" onclick="openCart()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-pink-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h3 class="text-lg font-semibold mb-4">Filters</h3>
+                    
+                    <!-- Categories -->
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">Categories</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600" checked>
+                                <span>All Products</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600">
+                                <span>Skincare</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600">
+                                <span>Makeup</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600">
+                                <span>Hair Care</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600">
+                                <span>Body Care</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Range -->
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">Price Range</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="mr-2 text-pink-600">
+                                <span>Under $25</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="mr-2 text-pink-600">
+                                <span>$25 - $50</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="mr-2 text-pink-600">
+                                <span>$50 - $100</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="mr-2 text-pink-600">
+                                <span>Over $100</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Brands -->
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">Brands</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600">
+                                <span>GlowBeauty</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600">
+                                <span>PureRadiance</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600">
+                                <span>NaturalGlow</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-pink-600">
+                                <span>LuxBeauty</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700 transition-colors">
+                        Apply Filters
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="lg:w-3/4">
+                <!-- Header -->
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900">All Products</h1>
+                            <p class="text-gray-600">Showing <span id="product-count">24</span> products</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <select class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                                <option>Sort by: Featured</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Name: A to Z</option>
+                                <option>Newest First</option>
+                            </select>
+                            <div class="flex gap-2">
+                                <button class="p-2 border rounded hover:bg-gray-100">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                                    </svg>
+                                </button>
+                                <button class="p-2 border rounded bg-pink-100">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="shop-products">
+                    <!-- Products will be loaded here -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-12 flex justify-center">
+                    <nav class="flex items-center space-x-2">
+                        <button class="px-3 py-2 border rounded-lg hover:bg-gray-100 disabled:opacity-50" disabled>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="px-4 py-2 bg-pink-600 text-white rounded-lg">1</button>
+                        <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">2</button>
+                        <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">3</button>
+                        <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">4</button>
+                        <button class="px-3 py-2 border rounded-lg hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </nav>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-6 border-b">
+                    <h3 class="text-xl font-semibold">Shopping Cart</h3>
+                    <button onclick="closeCart()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="border-t p-6">
+                    <div class="flex justify-between mb-4">
+                        <span class="text-lg font-semibold">Total:</span>
+                        <span class="text-lg font-bold text-pink-600">$<span id="cart-total">0.00</span></span>
+                    </div>
+                    <a href="checkout.html" class="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700 transition-colors text-center block">
+                        Proceed to Checkout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/shop.js"></script>
+</body>
+</html>

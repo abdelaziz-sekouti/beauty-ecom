@@ -1,0 +1,114 @@
+[
+    {
+        "id": 1,
+        "name": "Vitamin C Brightening Serum",
+        "category": "skincare",
+        "price": 45.99,
+        "image": "https://picsum.photos/seed/serum1/300/300",
+        "badge": "Bestseller",
+        "description": "Powerful vitamin C serum for radiant skin",
+        "brand": "GlowLab"
+    },
+    {
+        "id": 2,
+        "name": "Hydrating Facial Moisturizer",
+        "category": "skincare",
+        "price": 38.50,
+        "image": "https://picsum.photos/seed/moisturizer1/300/300",
+        "description": "24-hour hydration for all skin types",
+        "brand": "GlowLab"
+    },
+    {
+        "id": 3,
+        "name": "Matte Finish Foundation",
+        "category": "makeup",
+        "price": 32.00,
+        "image": "https://picsum.photos/seed/foundation1/300/300",
+        "description": "Long-lasting matte foundation",
+        "brand": "BeautyPro"
+    },
+    {
+        "id": 4,
+        "name": "Luxury Rose Perfume",
+        "category": "fragrance",
+        "price": 85.00,
+        "image": "https://picsum.photos/seed/perfume1/300/300",
+        "badge": "New",
+        "description": "Elegant rose fragrance with notes of jasmine",
+        "brand": "ScentElegance"
+    },
+    {
+        "id": 5,
+        "name": "Nourishing Hair Mask",
+        "category": "haircare",
+        "price": 28.75,
+        "image": "https://picsum.photos/seed/hairmask1/300/300",
+        "description": "Deep conditioning treatment for damaged hair",
+        "brand": "HairLux"
+    },
+    {
+        "id": 6,
+        "name": "Gentle Cleansing Gel",
+        "category": "skincare",
+        "price": 24.99,
+        "image": "https://picsum.photos/seed/cleanser1/300/300",
+        "description": "Sulfate-free daily cleanser",
+        "brand": "GlowLab"
+    },
+    {
+        "id": 7,
+        "name": "Velvet Matte Lipstick",
+        "category": "makeup",
+        "price": 22.50,
+        "image": "https://picsum.photos/seed/lipstick1/300/300",
+        "description": "Long-wear velvet matte lipstick",
+        "brand": "BeautyPro"
+    },
+    {
+        "id": 8,
+        "name": "Exotic Oud Fragrance",
+        "category": "fragrance",
+        "price": 120.00,
+        "image": "https://picsum.photos/seed/oud1/300/300",
+        "badge": "Luxury",
+        "description": "Premium oud fragrance for special occasions",
+        "brand": "ScentElegance"
+    },
+    {
+        "id": 9,
+        "name": "Retinol Night Cream",
+        "category": "skincare",
+        "price": 65.00,
+        "image": "https://picsum.photos/seed/retinol1/300/300",
+        "badge": "Popular",
+        "description": "Anti-aging retinol night treatment",
+        "brand": "GlowLab"
+    },
+    {
+        "id": 10,
+        "name": "Smoothing Eye Shadow Palette",
+        "category": "makeup",
+        "price": 48.00,
+        "image": "https://picsum.photos/seed/palette1/300/300",
+        "description": "12-piece versatile eye shadow palette",
+        "brand": "BeautyPro"
+    },
+    {
+        "id": 11,
+        "name": "Repairing Hair Oil",
+        "category": "haircare",
+        "price": 35.50,
+        "image": "https://picsum.photos/seed/airoil1/300/300",
+        "description": "Argan oil treatment for shiny, healthy hair",
+        "brand": "HairLux"
+    },
+    {
+        "id": 12,
+        "name": "Citrus Bliss Perfume",
+        "category": "fragrance",
+        "price": 55.00,
+        "image": "https://picsum.photos/seed/citrus1/300/300",
+        "description": "Refreshing citrus and bergamot fragrance",
+        "brand": "ScentElegance"
+    }
+]
