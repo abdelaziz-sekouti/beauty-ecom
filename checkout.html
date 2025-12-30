@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Beauty Haven</title>
+    <meta name="description" content="Complete your purchase at Beauty Haven. Secure checkout for premium beauty products.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1><a href="index.html" style="text-decoration: none; color: inherit;">Beauty Haven</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html#products" class="nav-link">Products</a></li>
+                    <li class="nav-item"><a href="index.html#categories" class="nav-link">Categories</a></li>
+                    <li class="nav-item"><a href="pages/about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <button class="search-btn" aria-label="Search">
+                        <svg class="icon"><use href="#search-icon"></use></svg>
+                    </button>
+                    <button class="user-btn" aria-label="Account">
+                        <svg class="icon"><use href="#user-icon"></use></svg>
+                    </button>
+                    <button class="cart-btn" aria-label="Shopping Cart">
+                        <svg class="icon"><use href="#cart-icon"></use></svg>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <button class="mobile-menu-btn" aria-label="Menu">
+                        <svg class="icon"><use href="#menu-icon"></use></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 80px;">
+        <div class="checkout-page">
+            <div class="container">
+                <h1 class="checkout-title">Checkout</h1>
+                
+                <div class="checkout-container">
+                    <!-- Checkout Progress -->
+                    <div class="checkout-progress">
+                        <div class="progress-step active">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Information</div>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" id="shipping-step">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Shipping</div>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" id="payment-step">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Payment</div>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" id="review-step">
+                            <div class="step-number">4</div>
+                            <div class="step-label">Review</div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-grid">
+                        <!-- Left Column: Forms -->
+                        <div class="checkout-forms">
+                            <!-- Step 1: Contact Information -->
+                            <div class="form-section active" id="contact-info-section">
+                                <h2>Contact Information</h2>
+                                <form id="contact-form" class="checkout-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" id="firstName" name="firstName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" id="lastName" name="lastName" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" required>
+                                    </div>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" id="saveInfo" name="saveInfo">
+                                        <label for="saveInfo">Save this information for next time</label>
+                                    </div>
+                                    <button type="button" class="next-step-btn" onclick="goToStep(2)">Continue to Shipping</button>
+                                </form>
+                            </div>
+
+                            <!-- Step 2: Shipping Address -->
+                            <div class="form-section" id="shipping-section">
+                                <h2>Shipping Address</h2>
+                                <form id="shipping-form" class="checkout-form">
+                                    <div class="form-group">
+                                        <label for="address">Street Address</label>
+                                        <input type="text" id="address" name="address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apartment">Apartment, suite, etc. (optional)</label>
+                                        <input type="text" id="apartment" name="apartment">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <input type="text" id="city" name="city" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="state">State</label>
+                                            <select id="state" name="state" required>
+                                                <option value="">Select State</option>
+                                                <option value="NY">New York</option>
+                                                <option value="CA">California</option>
+                                                <option value="TX">Texas</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="IL">Illinois</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="zipCode">ZIP Code</label>
+                                            <input type="text" id="zipCode" name="zipCode" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="country">Country</label>
+                                            <select id="country" name="country" required>
+                                                <option value="US">United States</option>
+                                                <option value="CA">Canada</option>
+                                                <option value="UK">United Kingdom</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" class="back-btn" onclick="goToStep(1)">Return to Information</button>
+                                        <button type="button" class="next-step-btn" onclick="goToStep(3)">Continue to Payment</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Step 3: Payment -->
+                            <div class="form-section" id="payment-section">
+                                <h2>Payment Method</h2>
+                                <form id="payment-form" class="checkout-form">
+                                    <div class="payment-methods">
+                                        <div class="payment-option active" data-method="card">
+                                            <input type="radio" id="credit-card" name="paymentMethod" value="card" checked>
+                                            <label for="credit-card">
+                                                <svg class="icon"><use href="#card-icon"></use></svg>
+                                                Credit/Debit Card
+                                            </label>
+                                        </div>
+                                        <div class="payment-option" data-method="paypal">
+                                            <input type="radio" id="paypal" name="paymentMethod" value="paypal">
+                                            <label for="paypal">
+                                                <svg class="icon"><use href="#paypal-icon"></use></svg>
+                                                PayPal
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="card-form" class="card-details">
+                                        <div class="form-group">
+                                            <label for="cardNumber">Card Number</label>
+                                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cardName">Name on Card</label>
+                                            <input type="text" id="cardName" name="cardName" required>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="expiryDate">Expiry Date</label>
+                                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cvv">CVV</label>
+                                                <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="button" class="back-btn" onclick="goToStep(2)">Return to Shipping</button>
+                                        <button type="button" class="next-step-btn" onclick="goToStep(4)">Review Order</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Step 4: Review -->
+                            <div class="form-section" id="review-section">
+                                <h2>Review Your Order</h2>
+                                <div class="review-content">
+                                    <div class="review-order-items" id="review-items">
+                                        <!-- Order items will be populated here -->
+                                    </div>
+                                    <div class="review-summary">
+                                        <div class="summary-row">
+                                            <span>Subtotal</span>
+                                            <span id="review-subtotal">$0.00</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span>Shipping</span>
+                                            <span id="review-shipping">$0.00</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span>Tax</span>
+                                            <span id="review-tax">$0.00</span>
+                                        </div>
+                                        <div class="summary-row total">
+                                            <span>Total</span>
+                                            <span id="review-total">$0.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" class="back-btn" onclick="goToStep(3)">Return to Payment</button>
+                                        <button type="button" class="place-order-btn" onclick="placeOrder()">Place Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Order Summary -->
+                        <div class="order-summary">
+                            <h3>Order Summary</h3>
+                            <div class="summary-items" id="summary-items">
+                                <!-- Cart items will be populated here -->
+                            </div>
+                            <div class="summary-totals">
+                                <div class="total-row">
+                                    <span>Subtotal</span>
+                                    <span id="subtotal">$0.00</span>
+                                </div>
+                                <div class="total-row">
+                                    <span>Shipping</span>
+                                    <span id="shipping">$0.00</span>
+                                </div>
+                                <div class="total-row">
+                                    <span>Tax</span>
+                                    <span id="tax">$0.00</span>
+                                </div>
+                                <div class="total-row final-total">
+                                    <span>Total</span>
+                                    <span id="total">$0.00</span>
+                                </div>
+                            </div>
+                            <div class="promo-section">
+                                <div class="form-group">
+                                    <input type="text" id="promo-code" placeholder="Promo code">
+                                    <button type="button" class="apply-promo-btn" onclick="applyPromo()">Apply</button>
+                                </div>
+                                <div id="promo-message"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <div class="success-icon">
+                <svg class="icon"><use href="#success-icon"></use></svg>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for your order. You will receive a confirmation email shortly.</p>
+            <p><strong>Order Number:</strong> <span id="orderNumber"></span></p>
+            <button class="continue-btn" onclick="continueShopping()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Beauty Haven</h3>
+                    <p>Your premier destination for luxury beauty products.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Twitter">TW</a>
+                        <a href="#" aria-label="Pinterest">PI</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="pages/about.html">About</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Beauty Haven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SVG Icons -->
+    <svg style="display: none;">
+        <symbol id="search-icon" viewBox="0 0 24 24">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="user-icon" viewBox="0 0 24 24">
+            <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="cart-icon" viewBox="0 0 24 24">
+            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="menu-icon" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="card-icon" viewBox="0 0 24 24">
+            <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="paypal-icon" viewBox="0 0 24 24">
+            <path d="M7 16l-1-8h12l-1 8H7zm7-4a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="success-icon" viewBox="0 0 24 24">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+    </svg>
+
+    <script src="js/checkout.js"></script>
+</body>
+</html>

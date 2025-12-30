@@ -202,6 +202,12 @@ function setupEventListeners() {
     if (contactForm) {
         contactForm.addEventListener('submit', handleContactSubmit);
     }
+    
+    // Checkout button
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', handleCheckout);
+    }
 }
 
 // Filter products by category
@@ -333,21 +339,16 @@ function handleCheckout() {
         return;
     }
     
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
-    
-    if (confirm(`Proceed to checkout?\n\nItems: ${itemCount}\nTotal: $${total.toFixed(2)}`)) {
-        showNotification('Processing checkout... (Demo mode)');
-        setTimeout(() => {
-            cart = [];
-            saveCart();
-            updateCartCount();
-            renderCartItems();
-            updateCartTotal();
-            hideCart();
-            showNotification('Thank you for your purchase!');
-        }, 2000);
-    }
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
+}
+
+// Handle newsletter submission
+function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const email = e.target.querySelector('input[type="email"]').value;
+    showNotification(`Thank you for subscribing with ${email}!`);
+    e.target.reset();
 }
 
 // Handle contact form submission
