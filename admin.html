@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Beauty Haven</title>
+    <meta name="description" content="Admin login for Beauty Haven e-commerce management">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <div class="admin-login-container">
+        <div class="admin-login-card">
+            <div class="admin-header">
+                <h1>Beauty Haven</h1>
+                <p>Admin Dashboard</p>
+            </div>
+            
+            <form id="adminLoginForm" class="admin-login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                
+                <button type="submit" class="admin-login-btn">Sign In</button>
+                
+                <div class="admin-demo-info">
+                    <p><strong>Demo Credentials:</strong></p>
+                    <p>Username: admin</p>
+                    <p>Password: admin123</p>
+                </div>
+            </form>
+            
+            <div class="admin-footer">
+                <p>&copy; 2024 Beauty Haven. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Message Modal -->
+    <div class="error-modal" id="errorModal" style="display: none;">
+        <div class="error-content">
+            <div class="error-icon">⚠️</div>
+            <h3>Login Failed</h3>
+            <p id="errorMessage">Invalid username or password</p>
+            <button class="error-ok-btn" onclick="closeErrorModal()">OK</button>
+        </div>
+    </div>
+
+    <script src="js/admin-login.js"></script>
+</body>
+</html>

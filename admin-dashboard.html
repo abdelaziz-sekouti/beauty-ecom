@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Beauty Haven</title>
+    <meta name="description" content="Admin dashboard for managing Beauty Haven e-commerce store">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-dashboard">
+    <header class="admin-header">
+        <div class="admin-nav">
+            <div class="admin-logo">
+                <h1>Beauty Haven Admin</h1>
+            </div>
+            <div class="admin-user">
+                <span class="admin-username">Welcome, Admin</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <!-- Sidebar Navigation -->
+        <nav class="admin-sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active" data-section="overview">
+                    <svg class="sidebar-icon"><use href="#dashboard-icon"></use></svg>
+                    <span>Overview</span>
+                </li>
+                <li class="sidebar-item" data-section="products">
+                    <svg class="sidebar-icon"><use href="#products-icon"></use></svg>
+                    <span>Products</span>
+                </li>
+                <li class="sidebar-item" data-section="orders">
+                    <svg class="sidebar-icon"><use href="#orders-icon"></use></svg>
+                    <span>Orders</span>
+                </li>
+                <li class="sidebar-item" data-section="customers">
+                    <svg class="sidebar-icon"><use href="#customers-icon"></use></svg>
+                    <span>Customers</span>
+                </li>
+                <li class="sidebar-item" data-section="analytics">
+                    <svg class="sidebar-icon"><use href="#analytics-icon"></use></svg>
+                    <span>Analytics</span>
+                </li>
+                <li class="sidebar-item" data-section="settings">
+                    <svg class="sidebar-icon"><use href="#settings-icon"></use></svg>
+                    <span>Settings</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="admin-main">
+            <!-- Overview Section -->
+            <section class="admin-section active" id="overview-section">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon products-stat">
+                            <svg class="icon"><use href="#products-icon"></use></svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-products">12</h3>
+                            <p>Total Products</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orders-stat">
+                            <svg class="icon"><use href="#orders-icon"></use></svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-orders">0</h3>
+                            <p>Total Orders</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon revenue-stat">
+                            <svg class="icon"><use href="#revenue-icon"></use></svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-revenue">$0.00</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon customers-stat">
+                            <svg class="icon"><use href="#customers-icon"></use></svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-customers">0</h3>
+                            <p>Total Customers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Recent Orders</h3>
+                    <div class="activity-list" id="recent-orders">
+                        <p class="no-data">No recent orders</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Management Section -->
+            <section class="admin-section" id="products-section">
+                <div class="section-header">
+                    <h2>Product Management</h2>
+                    <button class="add-btn" onclick="addProduct()">Add New Product</button>
+                </div>
+                
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body">
+                            <!-- Products will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Orders Management Section -->
+            <section class="admin-section" id="orders-section">
+                <div class="section-header">
+                    <h2>Order Management</h2>
+                    <select id="order-filter" onchange="filterOrders()">
+                        <option value="all">All Orders</option>
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                            <!-- Orders will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Customers Section -->
+            <section class="admin-section" id="customers-section">
+                <div class="section-header">
+                    <h2>Customer Management</h2>
+                    <input type="search" placeholder="Search customers..." class="search-input" onkeyup="searchCustomers(this.value)">
+                </div>
+                
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Total Orders</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customers-table-body">
+                            <!-- Customers will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section class="admin-section" id="analytics-section">
+                <h2>Analytics</h2>
+                <div class="analytics-grid">
+                    <div class="chart-container">
+                        <h3>Sales Overview</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="sales-chart"></canvas>
+                            <p>Sales chart will be displayed here</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Top Products</h3>
+                        <div class="top-products-list" id="top-products">
+                            <!-- Top products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="admin-section" id="settings-section">
+                <h2>Settings</h2>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label for="store-name">Store Name</label>
+                        <input type="text" id="store-name" value="Beauty Haven">
+                    </div>
+                    <div class="form-group">
+                        <label for="store-email">Store Email</label>
+                        <input type="email" id="store-email" value="hello@beautyhaven.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="tax-rate">Tax Rate (%)</label>
+                        <input type="number" id="tax-rate" value="8" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipping-cost">Standard Shipping Cost ($)</label>
+                        <input type="number" id="shipping-cost" value="9.99" step="0.01">
+                    </div>
+                    <button class="save-settings-btn" onclick="saveSettings()">Save Settings</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Product</h3>
+                <button class="close-modal" onclick="closeProductModal()">&times;</button>
+            </div>
+            <form id="product-form" class="product-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-category">Category</label>
+                        <select id="product-category" required>
+                            <option value="skincare">Skincare</option>
+                            <option value="makeup">Makeup</option>
+                            <option value="fragrance">Fragrance</option>
+                            <option value="haircare">Hair Care</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price</label>
+                    <input type="number" id="product-price" step="0.01" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="product-stock">Stock Quantity</label>
+                        <input type="number" id="product-stock" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-badge">Badge</label>
+                        <select id="product-badge">
+                            <option value="">None</option>
+                            <option value="Bestseller">Bestseller</option>
+                            <option value="New">New</option>
+                            <option value="Luxury">Luxury</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product-image">Image URL</label>
+                    <input type="url" id="product-image" placeholder="https://picsum.photos/seed/product/300/300">
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Description</label>
+                    <textarea id="product-description" rows="4"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="closeProductModal()">Cancel</button>
+                    <button type="submit" class="save-btn">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SVG Icons -->
+    <svg style="display: none;">
+        <symbol id="dashboard-icon" viewBox="0 0 24 24">
+            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="products-icon" viewBox="0 0 24 24">
+            <path d="M20 7h-9V3h-2v4H4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="orders-icon" viewBox="0 0 24 24">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="customers-icon" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" fill="none"/>
+            <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="analytics-icon" viewBox="0 0 24 24">
+            <path d="M18 20V10" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M12 20V4" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M6 20v-6" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="settings-icon" viewBox="0 0 24 24">
+            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 011 1.28 2 2 0 001.27 1.01l.06.06a1.65 1.65 0 001 0 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 01-1.28-1 2 2 0 01-1.01-1.27l-.06-.06a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-1-1.28 2 2 0 01-1.27-1.01l-.06-.06a1.65 1.65 0 000-1l.06-.06a2 2 0 011.28-1 2 2 0 011.27 1.01l.06.06a1.65 1.65 0 001.82-.33l.06.06a2 2 0 011 1.28 2 2 0 011.01 1.27l.06.06a1.65 1.65 0 00.33 1.82l-.06.06a2 2 0 01-1.28 1 2 2 0 01-1.27 1.01l-.06.06a1.65 1.65 0 00-1 0z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+        <symbol id="revenue-icon" viewBox="0 0 24 24">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 000-7z" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+    </svg>
+
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>
